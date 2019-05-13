@@ -1,6 +1,13 @@
 def repoName    = "git@github.com:mshenhera/test_multibranch_pipeline.git"
 def fileVersion = "VERSION.txt"
 
+// Python Local version identifiers supports only:
+// ASCII letters ([a-zA-Z]), ASCII digits ([0-9]), periods (.)
+// https://www.python.org/dev/peps/pep-0440/#local-version-identifiers
+def normalizeVersion(version) {
+  return version.replaceAll(/[\W_]/, ".")
+}
+
 node {
     // Job is triggered by
     // Scan Multibranch Pipeline Triggers
@@ -34,12 +41,12 @@ node {
                   currentBuild.displayName = "${majorVersion}.${BUILD_NUMBER}+${shortCommit}"
               } else {
                   // Add branch name to version for non master branch
-                  def branchNameNormaized = env.BRANCH_NAME.replaceAll(/[\W_]/, ".")
+                  def branchNameNormaized = normalizeVersion env.BRANCH_NAME
                   currentBuild.displayName = "${majorVersion}.${BUILD_NUMBER}+${branchNameNormaized}.${shortCommit}"
               }
             // Add tag name for tagged commit
             } else {
-            def tagNameNormaized = tagName.replaceAll(/[\W_]/, ".")
+            def tagNameNormaized = normalizeVersion tagName
               currentBuild.displayName = "${majorVersion}.${BUILD_NUMBER}+${tagName}.${shortCommit}"
             }
 
