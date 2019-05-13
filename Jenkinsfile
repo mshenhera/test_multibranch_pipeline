@@ -14,7 +14,7 @@ node {
                 doGenerateSubmoduleConfigurations: false,
                 extensions: [[$class: 'CleanBeforeCheckout']],
                 submoduleCfg: [],
-                userRemoteConfigs: [[url: "${repoName}"]]
+                userRemoteConfigs: [[url: "${repoName}", credentialsId: 'github_mykola_key']]
             ])
 
             gitCommit = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
