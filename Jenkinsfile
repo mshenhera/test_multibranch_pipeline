@@ -28,7 +28,7 @@ node {
 
             // If tag name is empty or match something like 1.5.3-3-gb9c22bb
             // We don't have tag there
-            if (tagName == '') || (!tagName.matches(/^.*-\d+-g[a-zA-Z0-9]{7}$/)) {
+            if (tagName == '' || !tagName.matches(/^.*-\d+-g[a-zA-Z0-9]{7}$/)) {
               if (env.BRANCH_NAME == 'master') {
                   // Do not add branch name in version for master branch
                   currentBuild.displayName = "${majorVersion}.${BUILD_NUMBER}+${shortCommit}"
