@@ -52,7 +52,7 @@ node {
                 userRemoteConfigs: [[url: "${repoName}", credentialsId: 'github_mykola_key']]
             ])
 
-            currentBuild.displayName = generateVersion
+            currentBuild.displayName = generateVersion()
 
             writeFile file: "${fileVersion}", text: "${currentBuild.displayName}"
             sh '''
