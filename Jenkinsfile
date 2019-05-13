@@ -34,12 +34,12 @@ node {
                   currentBuild.displayName = "${majorVersion}.${BUILD_NUMBER}+${shortCommit}"
               } else {
                   // Add branch name to version for non master branch
-                  def branchNameNormaized = env.BRANCH_NAME.replaceAll(/\W/, ".")
+                  def branchNameNormaized = env.BRANCH_NAME.replaceAll(/[\W_]/, ".")
                   currentBuild.displayName = "${majorVersion}.${BUILD_NUMBER}+${branchNameNormaized}.${shortCommit}"
               }
             // Add tag name for tagged commit
             } else {
-            def tagNameNormaized = tagName.replaceAll(/\W/, ".")
+            def tagNameNormaized = tagName.replaceAll(/[\W_]/, ".")
               currentBuild.displayName = "${majorVersion}.${BUILD_NUMBER}+${tagName}.${shortCommit}"
             }
 
