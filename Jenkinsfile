@@ -39,7 +39,7 @@ node {
               }
             // Add tag name for tagged commit
             } else {
-              def tagNameNormaized = tagName.replaceAll(/\W/, ".")
+            def tagNameNormaized = tagName.replaceAll(/\W/, ".")
               currentBuild.displayName = "${majorVersion}.${BUILD_NUMBER}+${tagName}.${shortCommit}"
             }
 
@@ -51,7 +51,7 @@ node {
                 echo "======================"
                 echo "git describe --tags"
                 echo "======================"
-                git describe --tags
+                git describe --tags || echo "No tags"
                 echo "======================"
             '''
         }
