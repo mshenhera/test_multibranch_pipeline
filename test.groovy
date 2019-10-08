@@ -7,7 +7,7 @@ def multiPipeline = new GithubMultibranch(
     displayName: 'Github-Test',
     repositoryOwner: "mshenhera",
     repositoryName: "test_multibranch_pipeline",
-    credentials: 'github',
+    credentials: 'github-mykola',
     includeBranches: 'development staging master',
     excludeBranches: ''
 ).build(this)
