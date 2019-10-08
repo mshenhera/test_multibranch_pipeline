@@ -49,7 +49,7 @@ node {
                 doGenerateSubmoduleConfigurations: false,
                 extensions: [[$class: 'CleanBeforeCheckout']],
                 submoduleCfg: [],
-                userRemoteConfigs: [[url: "${repoName}", credentialsId: 'github_mykola_key']]
+                userRemoteConfigs: [[url: "${repoName}", credentialsId: 'github-mykola']]
             ])
 
             currentBuild.displayName = generateVersion()
